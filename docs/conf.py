@@ -59,7 +59,7 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 
 html_static_path = ['_static']
 
-htmlhelp_basename = 'Watson-Frameworkdoc'
+htmlhelp_basename = 'Watson-Filesystemdoc'
 
 # html_sidebars = {}
 html_show_sourcelink = False

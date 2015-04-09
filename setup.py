@@ -69,7 +69,7 @@ setup(
     name='watson-filesystem',
     version=watson.filesystem.__version__,
     url='http://github.com/bespohk/watson-filesystem',
-    description='An Python 3 framework for creating web applications.',
+    description='Abstracted filesystems for Watson.',
     long_description=readme,
 
     author='Simon Coulton',
