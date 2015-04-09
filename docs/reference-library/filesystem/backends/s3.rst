@@ -1,5 +1,5 @@
 watson.filesystem.backends.s3
-========================
+=============================
 
 .. automodule:: watson.filesystem.backends.s3
     :members:
