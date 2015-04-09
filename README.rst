@@ -19,7 +19,8 @@ Installation
 Dependencies
 ------------
 
--  watson-html
+-  boto3
+-  pathlib
 
 .. |Build Status| image:: https://api.travis-ci.org/watsonpy/watson-filesystem.png?branch=master
    :target: https://travis-ci.org/watsonpy/watson-filesystem
