@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 from setuptools import setup, Command
-import watson.package
+import watson.filesystem
 
 
 class BaseCommand(Command):
