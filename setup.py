@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from setuptools import setup, Command
+from setuptools import setup, Command, find_packages
 import watson.filesystem
 
 
@@ -59,6 +59,9 @@ with open(os.path.join(path, 'README.rst')) as f:
 with open(os.path.join(path, 'requirements.txt')) as f:
     requirements = f.read().splitlines()
 
+with open(os.path.join(path, 'requirements-test.txt')) as f:
+    test_requirements = f.read().splitlines()
+
 try:
     import pathlib  # For python 3.3
 except:
@@ -102,11 +105,14 @@ setup(
               's3',
               'web'],
 
-    packages=['watson', 'watson.filesystem'],
+    packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     include_package_data=True,
 
     zip_safe=False,
     install_requires=requirements,
+    extras_require={
+        'test': test_requirements,
+    },
 
     cmdclass={
         'test': PyTest,
