@@ -1,7 +1,7 @@
 Watson-Filesystem
 ==============
 
-Modify and convert values into something else.
+Work with multiple different filesystems with ease (local, s3 etc)
 
 For full documentation please see `Read The
 Docs <http://watson-filesystem.readthedocs.org/>`__.
