@@ -26,9 +26,9 @@ Dependencies
    :target: https://travis-ci.org/watsonpy/watson-filesystem
 .. |Coverage Status| image:: https://coveralls.io/repos/watsonpy/watson-filesystem/badge.png
    :target: https://coveralls.io/r/watsonpy/watson-filesystem
-.. |Version| image:: https://pypip.in/v/watson-filesystem/badge.png
+.. |Version| image:: http://badge.kloud51.com/pypi/v/watson-filesystem.png
    :target: https://pypi.python.org/pypi/watson-filesystem/
-.. |Downloads| image:: https://pypip.in/d/watson-filesystem/badge.png
+.. |Downloads| image:: http://badge.kloud51.com/pypi/d/watson-filesystem.png
    :target: https://pypi.python.org/pypi/watson-filesystem/
-.. |Licence| image:: https://pypip.in/license/watson-filesystem/badge.png
+.. |Licence| image:: http://badge.kloud51.com/pypi/license/watson-filesystem.png
    :target: https://pypi.python.org/pypi/watson-filesystem/

@@ -39,7 +39,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 project = 'Watson - Filesystem'
-copyright = '2015, Simon Coulton'
+copyright = '2016, Simon Coulton'
 
 version = watson.filesystem.__version__
 release = version

@@ -27,7 +27,7 @@ class PyPiPublish(BaseCommand):
     """
     def run(self):
         if (confirm('Are you sure you want to push to PyPi?')):
-            os.system('python setup.py sdist upload')
+            os.system('python setup.py sdist bdist_wheel upload')
             clean()
 
 
@@ -80,7 +80,7 @@ setup(
 
     license=license,
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
@@ -89,6 +89,7 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: Implementation :: CPython',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
