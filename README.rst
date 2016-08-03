@@ -9,7 +9,7 @@ Docs <http://watson-filesystem.readthedocs.org/>`__.
 Build Status
 ^^^^^^^^^^^^
 
-|Build Status| |Coverage Status| |Version| |Downloads| |Licence|
+|Build Status| |Coverage Status| |Version|
 
 Installation
 ------------
@@ -22,9 +22,9 @@ Dependencies
 -  boto3
 -  pathlib
 
-.. |Build Status| image:: https://api.travis-ci.org/watsonpy/watson-filesystem.png?branch=master
+.. |Build Status| image:: https://img.shields.io/travis/watsonpy/watson-filesystem.svg?maxAge=2592000
    :target: https://travis-ci.org/watsonpy/watson-filesystem
-.. |Coverage Status| image:: https://coveralls.io/repos/watsonpy/watson-filesystem/badge.png
+.. |Coverage Status| image:: https://img.shields.io/coveralls/watsonpy/watson-filesystem.svg?maxAge=2592000
    :target: https://coveralls.io/r/watsonpy/watson-filesystem
 .. |Version| image:: https://img.shields.io/pypi/v/watson-filesystem.svg?maxAge=2592000
    :target: https://pypi.python.org/pypi/watson-filesystem/
