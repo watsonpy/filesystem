@@ -76,7 +76,7 @@ setup(
     long_description=readme,
 
     author='Simon Coulton',
-    author_email='simon at bespohk.com',
+    author_email='simon@bespohk.com',
 
     license=license,
     classifiers=[

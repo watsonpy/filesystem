@@ -17,9 +17,14 @@ class Backend(abc.Backend):
     def read(self, file, options=None):
         file = self._resolve_path(file)
         _options = {
-            'mode': 'r',
-            'encoding': 'utf-8'
+            'mode': 'rb'
         }
+        if 'bytes' in options:
+            options.pop('bytes')
+            _options = {
+                'mode': 'r',
+                'encoding': 'utf-8'
+            }
         if options:
             _options.update(options)
         try:
@@ -42,9 +47,11 @@ class Backend(abc.Backend):
             file = pathlib.Path(file)
             self.create(file.parent)
         _options = {
-            'mode': 'w',
-            'encoding': 'utf-8'
+            'mode': 'wb'
         }
+        if isinstance(content, str):
+            _options['mode'] = 'w'
+            _options['encoding'] = 'utf-8'
         if options:
             _options.update(options)
         with file.open(**_options) as f:
@@ -52,12 +59,13 @@ class Backend(abc.Backend):
         return True
 
     def append(self, file, content, options=None):
+        options = {'mode': 'ab'}
+        if isinstance(content, str):
+            options['mode'] = 'a'
         return self.write(
             file,
             content,
-            {
-                'mode': 'a'
-            }
+            options
         )
 
     def delete(self, path):
