@@ -59,7 +59,7 @@ class Backend(abc.Backend):
         if options:
             _options.update(options)
         body = response['Body'].read()
-        return body.decode(_options['encoding'])
+        return body
 
     def exists(self, path):
         obj = self._object_summary(path)

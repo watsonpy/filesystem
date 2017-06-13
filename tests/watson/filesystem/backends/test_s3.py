@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
+import os
+import pytest
 from pytest import raises
 from watson.filesystem import Filesystem, backends, exceptions
 
 
+@pytest.mark.skipif(
+    not os.environ.get('AWS_ACCESS_KEY_ID'), reason='No AWS credentials')
 class TestS3(object):
 
     def setup(self):
         self.fs = Filesystem(backends.S3(
-            aws_access_key='XXXX',
-            aws_secret_access_key='XXXX',
+            aws_access_key=os.environ['AWS_ACCESS_KEY_ID'],
+            aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
             bucket='watson-filesystem'),
         )
 
@@ -19,7 +23,7 @@ class TestS3(object):
     def test_read(self):
         self.fs.write('test.txt', 'test')
         content = self.fs.read('test.txt')
-        assert content == 'test'
+        assert content == b'test'
 
     def test_read_not_found(self):
         with raises(exceptions.NotFoundError):
@@ -28,8 +32,8 @@ class TestS3(object):
     def test_append(self):
         self.fs.write('test.txt', 'testing')
         assert self.fs.read('test.txt')
-        self.fs.append('test.txt', ' with new test copy')
-        assert self.fs.read('test.txt') == 'testing with new test copy'
+        self.fs.append('test.txt', b' with new test copy')
+        assert self.fs.read('test.txt') == b'testing with new test copy'
 
     def test_create_delete(self):
         self.fs.create('blah.txt')

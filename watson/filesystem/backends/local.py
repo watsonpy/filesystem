@@ -19,7 +19,7 @@ class Backend(abc.Backend):
         _options = {
             'mode': 'rb'
         }
-        if 'bytes' in options:
+        if options and 'bytes' in options:
             options.pop('bytes')
             _options = {
                 'mode': 'r',
@@ -29,7 +29,7 @@ class Backend(abc.Backend):
             _options.update(options)
         try:
             with file.open(**_options) as f:
-                return ''.join(f.readlines())
+                return b''.join(f.readlines())
         except Exception as e:
             raise exceptions.NotFoundError from e
 
@@ -37,7 +37,7 @@ class Backend(abc.Backend):
         try:
             path = self._resolve_path(path)
             return path.exists()
-        except FileNotFoundError:
+        except exceptions.NotFoundError:
             return False
 
     def write(self, file, content, options=None):
@@ -112,5 +112,9 @@ class Backend(abc.Backend):
     def _resolve_path(self, path):
         # Converts a path into a Path object.
         if isinstance(path, pathlib.Path):
-            return path.resolve()
-        return pathlib.Path(path).resolve()
+            new_path = path.resolve()
+        else:
+            new_path = pathlib.Path(path).resolve()
+        if not new_path.exists():
+            raise exceptions.NotFoundError(new_path)
+        return new_path

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 from pytest import raises
-from watson.filesystem import Filesystem, backends
+from watson.filesystem import Filesystem, backends, exceptions
 
 
 class TestLocal(object):
@@ -22,10 +22,11 @@ class TestLocal(object):
         assert isinstance(fs.backend, backends.Local)
 
     def test_read(self):
-        assert self.fs.read(__file__).startswith('# -*- coding:')
+        content = self.fs.read(__file__)
+        assert content.startswith(b'# -*- coding:')
 
     def test_read_not_found(self):
-        with raises(FileNotFoundError):
+        with raises(exceptions.NotFoundError):
             self.fs.read('../support.py')
 
     def test_exists(self):
@@ -37,7 +38,7 @@ class TestLocal(object):
         path = self.file('test')
         self.fs.write(path, 'test')
         assert self.fs.exists(path)
-        assert self.fs.read(path) == 'test'
+        assert self.fs.read(path) == b'test'
         non_existent_path = self.file('testing/test')
         self.fs.write(non_existent_path, 'test')
         assert self.fs.exists(non_existent_path)
@@ -46,7 +47,7 @@ class TestLocal(object):
     def test_append(self):
         path = self.file('test')
         self.fs.append(path, 'test')
-        assert self.fs.read(path) == 'testtest'
+        assert self.fs.read(path) == b'testtest'
 
     def test_create_delete(self):
         path = self.file('test-delete')
