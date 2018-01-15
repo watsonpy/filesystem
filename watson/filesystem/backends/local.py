@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from contextlib import suppress
 import pathlib
 import shutil
+from watson.common.contextmanagers import suppress
 from watson.filesystem import exceptions
 from watson.filesystem.backends import abc
 

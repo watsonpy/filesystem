@@ -8,3 +8,4 @@ coveralls
 boto3
 
 # Watson
+watson-common >= 1.1.0
