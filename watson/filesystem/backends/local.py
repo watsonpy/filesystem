@@ -43,7 +43,7 @@ class Backend(abc.Backend):
     def write(self, file, content, options=None):
         try:
             file = self._resolve_path(file)
-        except:
+        except Exception:
             file = pathlib.Path(file)
             self.create(file.parent)
         _options = {
@@ -71,7 +71,7 @@ class Backend(abc.Backend):
     def delete(self, path):
         try:
             path = self._resolve_path(path)
-        except:
+        except Exception:
             return False
         if path.is_dir():
             try:

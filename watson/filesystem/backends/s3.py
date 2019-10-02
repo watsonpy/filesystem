@@ -67,7 +67,7 @@ class Backend(abc.Backend):
         try:
             summary = obj.get()
             return summary['ContentLength'] >= 0
-        except:
+        except Exception:
             return False
 
     def write(self, file, content, options=None):
@@ -90,7 +90,7 @@ class Backend(abc.Backend):
         obj = self._object(path)
         try:
             obj.delete()
-        except:
+        except Exception:
             return False
         return True
 
